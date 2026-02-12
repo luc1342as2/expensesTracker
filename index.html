@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker — Take Control of Your Money</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <header id="header" class="header">
+            <h1><span class="emoji">💰</span> Expense Tracker</h1>
+            <p class="tagline">Track every dollar, reach your goals</p>
+        </header>
+
+        <section class="balance-card">
+            <p class="balance-label">Your Balance</p>
+            <p class="balance-value" id="balance">$0.00</p>
+            <p class="balance-mood" id="balance-mood">Add transactions to get started</p>
+        </section>
+
+        <section class="summary-cards">
+            <div class="summary-card summary-income">
+                <span class="summary-emoji">📈</span>
+                <span class="summary-label">Income</span>
+                <span class="summary-value" id="income">$0.00</span>
+            </div>
+            <div class="summary-card summary-expense">
+                <span class="summary-emoji">📉</span>
+                <span class="summary-label">Expenses</span>
+                <span class="summary-value" id="expense">$0.00</span>
+            </div>
+        </section>
+
+        <section class="add-transaction">
+            <h2><span class="emoji">➕</span> Add Transaction</h2>
+            <form id="transaction-form">
+                <div class="form-row">
+                    <label for="transaction-name">Description</label>
+                    <input type="text" id="transaction-name" placeholder="e.g. Coffee, Salary, Groceries" required>
+                </div>
+                <div class="form-row">
+                    <label for="transaction-amount">Amount</label>
+                    <input type="number" id="transaction-amount" placeholder="0.00" step="0.01" required>
+                </div>
+                <div class="form-row">
+                    <label>Type</label>
+                    <div class="type-toggles">
+                        <label class="type-toggle type-income">
+                            <input type="radio" name="type" value="income" checked>
+                            <span>📥 Income</span>
+                        </label>
+                        <label class="type-toggle type-expense">
+                            <input type="radio" name="type" value="expense">
+                            <span>📤 Expense</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="transaction-category">Category</label>
+                    <select id="transaction-category">
+                        <option value="other">📌 Other</option>
+                        <optgroup label="Income">
+                            <option value="salary">💼 Salary</option>
+                            <option value="freelance">🖥️ Freelance</option>
+                            <option value="gift">🎁 Gift</option>
+                            <option value="investment">📊 Investment</option>
+                        </optgroup>
+                        <optgroup label="Expenses">
+                            <option value="food">🍕 Food & Dining</option>
+                            <option value="transport">🚗 Transport</option>
+                            <option value="shopping">🛒 Shopping</option>
+                            <option value="bills">📄 Bills & Utilities</option>
+                            <option value="entertainment">🎬 Entertainment</option>
+                            <option value="health">💊 Health</option>
+                            <option value="travel">✈️ Travel</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">
+                    <span class="btn-emoji">✅</span> Add Transaction
+                </button>
+            </form>
+        </section>
+
+        <section class="history-section">
+            <div class="history-header">
+                <h2><span class="emoji">📋</span> Transaction History</h2>
+                <div class="history-actions">
+                    <button type="button" class="btn-filter active" data-filter="all">All</button>
+                    <button type="button" class="btn-filter" data-filter="income">Income</button>
+                    <button type="button" class="btn-filter" data-filter="expense">Expense</button>
+                    <button type="button" class="btn-clear" id="clear-all" title="Clear all">🗑️ Clear</button>
+                </div>
+            </div>
+            <ul id="transaction-history" class="transaction-list"></ul>
+            <div id="empty-state" class="empty-state">
+                <span class="empty-emoji">📭</span>
+                <p>No transactions yet</p>
+                <p class="empty-hint">Add your first one above!</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2022 All Rights Reserved Lucas Ghigli</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
